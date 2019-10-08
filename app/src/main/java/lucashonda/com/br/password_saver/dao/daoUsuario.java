@@ -32,6 +32,10 @@ public class daoUsuario {
         realm = Realm.getInstance(config);
     }
 
+    public void delete() {
+        realm.executeTransaction(realm -> realm.delete(usuario.class));
+    }
+
     public void insert(String user, String senha, boolean loged) {
 
         realm.executeTransaction(realm -> {
@@ -45,8 +49,8 @@ public class daoUsuario {
         });
     }
 
-    public boolean get() {
-        RealmResults<usuario> results = realm.where(usuario.class).findAll();
-        return results.size() > 1 ? true : false;
+    public boolean validUser(String user, String senha) {
+        usuario u = realm.where(usuario.class).equalTo("usuario", user).equalTo("senha", senha).findFirst();
+        return u != null ? true : false;
     }
 }

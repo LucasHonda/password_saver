@@ -41,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     private List<passwords> mArr;
     private adapterService adapter;
-
+    private Bundle bundle;
+    private String user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
 
             toolbar = findViewById(R.id.toolbar);
             setSupportActionBar(toolbar);
+
+            bundle = getIntent().getExtras();
+
+            user = bundle.getSerializable("user").toString();
 
             setComponents();
             setComponentsValues();
@@ -113,10 +118,11 @@ public class MainActivity extends AppCompatActivity {
 
         positive.setOnClickListener((View v) -> {
             if (!tvServico.getText().toString().isEmpty() && !tvUsuario.getText().toString().isEmpty() && !tvSenha.getText().toString().isEmpty()) {
-                new daoPasswords(context).insert(tvServico.getText().toString(), tvUsuario.getText().toString(), tvSenha.getText().toString());
+                new daoPasswords(context).insert(user, tvServico.getText().toString(), tvUsuario.getText().toString(), tvSenha.getText().toString());
                 passwords p = new passwords();
+                p.setUser(user);
                 p.setServico(tvServico.getText().toString());
-                p.setUsuario(tvUsuario.getText().toString());
+                p.setUsuarioServico(tvUsuario.getText().toString());
                 p.setSenha(tvSenha.getText().toString());
                 mArr.add(p);
                 adapter.notifyDataSetChanged();

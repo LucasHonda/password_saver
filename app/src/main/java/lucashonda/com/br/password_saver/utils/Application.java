@@ -11,6 +11,12 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
+        daoUsuario d = new daoUsuario(getApplicationContext());
+        d.delete();
+        d.insert("adm", "adm", false);
+
+
         Intent i;
 
         i = new Intent(this, LoginActivity.class);

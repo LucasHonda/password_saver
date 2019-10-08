@@ -55,18 +55,18 @@ public class adapterService extends RecyclerView.Adapter<holderService> {
             p = mArr.get(i);
 
             view.tvServico.setText(p.getServico());
-            view.tvUsuario.setText(p.getUsuario());
+            view.tvUsuario.setText(p.getUsuarioServico());
 
             view.llPrincipal.setOnClickListener((View v) -> {
 
                 View dView = View.inflate(context, R.layout.dialog_add, null);
 
-                EditText tvServico = dView.findViewById(R.id.tvUsuario);
+                EditText tvServico = dView.findViewById(R.id.tvServico);
                 EditText tvUsuario = dView.findViewById(R.id.tvUsuario);
                 EditText tvSenha = dView.findViewById(R.id.tvSenha);
 
                 tvServico.setText(p.getServico());
-                tvUsuario.setText(p.getUsuario());
+                tvUsuario.setText(p.getUsuarioServico());
                 tvSenha.setText(p.getSenha());
 
                 tvServico.setEnabled(false);
@@ -122,7 +122,7 @@ public class adapterService extends RecyclerView.Adapter<holderService> {
             @Override
             public void onDismissed(Snackbar snackbar, int event) {
                 if (mRecentlyDeletedItemPosition != -1 && mRecentlyDeletedItem != null)
-                    new daoPasswords(context).delete(mRecentlyDeletedItem.getServico(), mRecentlyDeletedItem.getUsuario(), mRecentlyDeletedItem.getSenha());
+                    new daoPasswords(context).delete(mRecentlyDeletedItem.getServico(), mRecentlyDeletedItem.getUsuarioServico(), mRecentlyDeletedItem.getSenha());
             }
 
             @Override

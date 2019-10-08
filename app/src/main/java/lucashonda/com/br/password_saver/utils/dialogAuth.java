@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.CancellationSignal;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
@@ -18,6 +19,8 @@ import android.security.keystore.KeyProperties;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -95,16 +98,19 @@ public class dialogAuth {
                                     if (bool) {
                                         ivFinger.setImageDrawable(context.getResources().getDrawable(R.drawable.finger_pass));
 
-                                        new daoUsuario(context).insert("", "", true);
-
                                         Intent intent = new Intent(activity, MainActivity.class);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putSerializable("user", "adm");
+                                        intent.putExtras(bundle);
                                         dialog1.dismiss();
                                         activity.finishAffinity();
                                         activity.startActivity(intent);
                                     } else {
                                         if (count < 2) {
                                             count++;
+                                            final Animation animShake = AnimationUtils.loadAnimation(context, R.anim.shake);
                                             ivFinger.setImageDrawable(context.getResources().getDrawable(R.drawable.finger_error));
+                                            ivFinger.startAnimation(animShake);
                                         } else {
                                             cancellationSignal.cancel();
                                             dialog1.dismiss();

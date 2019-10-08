@@ -32,14 +32,15 @@ public class daoPasswords {
         realm = Realm.getInstance(config);
     }
 
-    public void insert(String servico, String usuario, String senha) {
+    public void insert(String user, String servico, String usuario, String senha) {
 
         realm.executeTransaction(realm -> {
 
             passwords p = realm.createObject(passwords.class);
 
+            p.setUser(user);
             p.setServico(servico);
-            p.setUsuario(usuario);
+            p.setUsuarioServico(usuario);
             p.setSenha(senha);
 
         });
@@ -50,9 +51,9 @@ public class daoPasswords {
         realm.beginTransaction();
 
         passwords p = realm.where(passwords.class)
-                .equalTo("Servico", servico)
-                .equalTo("Usuario", usuario)
-                .equalTo("Senha", senha)
+                .equalTo("servico", servico)
+                .equalTo("usuarioServico", usuario)
+                .equalTo("senha", senha)
                 .findFirst();
 
         p.deleteFromRealm();

@@ -4,31 +4,40 @@ import io.realm.RealmObject;
 
 public class passwords extends RealmObject {
 
-    private String Servico;
-    private String Usuario;
-    private String Senha;
+    private String user;
+    private String servico;
+    private String usuarioServico;
+    private String senha;
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
 
     public String getServico() {
-        return Servico;
+        return servico;
     }
 
     public void setServico(String servico) {
-        Servico = servico;
+        this.servico = servico;
     }
 
-    public String getUsuario() {
-        return Usuario;
+    public String getUsuarioServico() {
+        return usuarioServico;
     }
 
-    public void setUsuario(String usuario) {
-        Usuario = usuario;
+    public void setUsuarioServico(String usuarioServico) {
+        this.usuarioServico = usuarioServico;
     }
 
     public String getSenha() {
-        return Senha;
+        return senha;
     }
 
     public void setSenha(String senha) {
-        Senha = senha;
+        this.senha = senha;
     }
 }

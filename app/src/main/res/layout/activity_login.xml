@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/login_icon" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lblUsuario"
@@ -40,7 +40,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-   <!--<com.google.android.material.textfield.TextInputLayout
+   <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/lblSenha"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
@@ -59,7 +59,7 @@
             android:layout_height="match_parent"
             android:hint="Senha"
             android:imeOptions="actionNext" />
-    </com.google.android.material.textfield.TextInputLayout>-->
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btnEntrar"
@@ -72,9 +72,9 @@
         android:text="Entrar"
         android:textColor="@color/branco"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblUsuario" />
+        app:layout_constraintTop_toBottomOf="@+id/lblSenha" />
 
     <TextView
         android:id="@+id/tvVersion"
